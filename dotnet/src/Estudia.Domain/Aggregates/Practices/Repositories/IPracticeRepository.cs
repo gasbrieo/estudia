@@ -7,6 +7,4 @@ public interface IPracticeRepository
     Task AddAsync(Practice practice, CancellationToken cancellationToken = default);
 
     Task UpdateAsync(Practice practice, CancellationToken cancellationToken = default);
-
-    Task DeleteAsync(Practice practice, CancellationToken cancellationToken = default);
 }

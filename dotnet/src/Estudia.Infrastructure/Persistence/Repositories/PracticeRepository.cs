@@ -58,10 +58,4 @@ public class PracticeRepository(AppDbContext context) : IPracticeRepository
 
         await context.SaveChangesAsync(cancellationToken);
     }
-
-    public async Task DeleteAsync(Practice practice, CancellationToken cancellationToken = default)
-    {
-        context.Practices.Remove(practice);
-        await context.SaveChangesAsync(cancellationToken);
-    }
 }

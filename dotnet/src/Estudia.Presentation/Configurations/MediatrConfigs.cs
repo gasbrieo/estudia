@@ -9,8 +9,8 @@ public static class MediatrConfigs
     {
         var assemblies = new[]
         {
-            typeof(IUseCasesMarker).Assembly,
-            typeof(ICoreMarker).Assembly
+            typeof(IApplicationMarker).Assembly,
+            typeof(IDomainMarker).Assembly
         };
 
         return services

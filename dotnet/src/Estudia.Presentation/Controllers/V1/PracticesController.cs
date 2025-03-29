@@ -1,63 +1,60 @@
-﻿using Estudia.Domain.Aggregates.Practices;
-using Estudia.Domain.Aggregates.Practices.Repositories;
+﻿using Estudia.Application.UseCases.Practices.CreateAnswer;
+using Estudia.Application.UseCases.Practices.CreatePractice;
+using Estudia.Application.UseCases.Practices.CreateQuestion;
+using Estudia.Application.UseCases.Practices.GetAnswer;
+using Estudia.Application.UseCases.Practices.GetPractice;
+using Estudia.Application.UseCases.Practices.GetQuestion;
+using Estudia.Presentation.Requests.V1;
 
 namespace Estudia.Presentation.Controllers.V1;
 
-public class PracticesController(IPracticeRepository repository) : BaseController
+public class PracticesController(IMediator mediator) : BaseController
 {
     [HttpGet("{practiceId:guid}")]
     public async Task<IActionResult> GetPractice(Guid practiceId, CancellationToken cancellationToken)
     {
-        var practice = await repository.GetByIdAsync(practiceId, cancellationToken);
-
-        if (practice is null)
-            return NotFound();
-
-        return Ok(practice);
+        var query = new GetPracticeQuery(practiceId);
+        var result = await mediator.Send(query, cancellationToken);
+        return result.ToActionResult(this);
     }
 
     [HttpPost]
     public async Task<IActionResult> CreatePractice(CancellationToken cancellationToken)
     {
-        var practice = new Practice();
-        
-        await repository.AddAsync(practice, cancellationToken);
-        
-        return Ok(practice);
+        var command = new CreatePracticeCommand();
+        var result = await mediator.Send(command, cancellationToken);
+        return result.ToActionResult(this);
+    }
+
+    [HttpGet("{practiceId:guid}/questions/{questionId:guid}")]
+    public async Task<IActionResult> GetQuestion(Guid practiceId, Guid questionId, CancellationToken cancellationToken)
+    {
+        var query = new GetQuestionQuery(practiceId, questionId);
+        var result = await mediator.Send(query, cancellationToken);
+        return result.ToActionResult(this);
     }
 
     [HttpPost("{practiceId:guid}/questions")]
-    public async Task<IActionResult> CreatePracticeQuestion(Guid practiceId, CancellationToken cancellationToken)
+    public async Task<IActionResult> CreateQuestion(Guid practiceId, CancellationToken cancellationToken)
     {
-        var practice = await repository.GetByIdAsync(practiceId, cancellationToken);
+        var command = new CreateQuestionCommand(practiceId);
+        var result = await mediator.Send(command, cancellationToken);
+        return result.ToActionResult(this);
+    }
 
-        if (practice is null)
-            return NotFound();
-
-        practice.Questions.Add(new PracticeQuestion(practice.Id, "Quanto é 10 + 10?"));
-
-        await repository.UpdateAsync(practice, cancellationToken);
-
-        return Ok(practice);
+    [HttpGet("{practiceId:guid}/questions/{questionId:guid}/answers/{answerId:guid}")]
+    public async Task<IActionResult> GetAnswer(Guid practiceId, Guid questionId, Guid answerId, CancellationToken cancellationToken)
+    {
+        var query = new GetAnswerQuery(practiceId, questionId, answerId);
+        var result = await mediator.Send(query, cancellationToken);
+        return result.ToActionResult(this);
     }
 
     [HttpPost("{practiceId:guid}/questions/{questionId:guid}/answers")]
-    public async Task<IActionResult> CreatePracticeQuestionAnswer(Guid practiceId, Guid questionId, CancellationToken cancellationToken)
+    public async Task<IActionResult> CreateAnswer(Guid practiceId, Guid questionId, [FromBody] CreateAnswerRequest request, CancellationToken cancellationToken)
     {
-        var practice = await repository.GetByIdAsync(practiceId, cancellationToken);
-
-        if (practice is null)
-            return NotFound();
-
-        var question = practice.Questions.SingleOrDefault(q => q.Id == questionId);
-
-        if (question is null)
-            return NotFound();
-
-        question.Answers.Add(new PracticeQuestionAnswer(questionId, "20", true, "Você está correto!"));
-
-        await repository.UpdateAsync(practice, cancellationToken);
-
-        return Ok(practice);
+        var command = new CreateAnswerCommand(practiceId, questionId, request.GivenAnswer);
+        var result = await mediator.Send(command, cancellationToken);
+        return result.ToActionResult(this);
     }
 }

@@ -5,6 +5,7 @@ global using System.Text.RegularExpressions;
 global using Asp.Versioning;
 global using Asp.Versioning.ApiExplorer;
 global using FluentValidation;
+global using MediatR;
 global using Microsoft.AspNetCore.Diagnostics;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.ApplicationModels;

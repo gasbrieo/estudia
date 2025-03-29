@@ -8,7 +8,7 @@ public static class FluentValidationConfigs
     {
         var assemblies = new[]
         {
-            typeof(IUseCasesMarker).Assembly,
+            typeof(IApplicationMarker).Assembly,
         };
 
         return services.AddValidatorsFromAssemblies(assemblies);
