@@ -10,8 +10,4 @@
 		<PackageReference Include="Modello.Foundation" Version="0.0.6" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Aggregates\" />
-	</ItemGroup>
-
 </Project>
