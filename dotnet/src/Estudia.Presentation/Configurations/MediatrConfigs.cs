@@ -1,5 +1,5 @@
-﻿using Estudia.Domain;
-using Estudia.Application;
+﻿using Estudia.Application;
+using Estudia.Domain;
 
 namespace Estudia.Presentation.Configurations;
 

@@ -23,4 +23,9 @@
 		<ProjectReference Include="..\Estudia.Infrastructure\Estudia.Infrastructure.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Controllers\V1\" />
+	  <Folder Include="Requests\V1\" />
+	</ItemGroup>
+
 </Project>
