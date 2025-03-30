@@ -1,4 +1,4 @@
-﻿namespace Estudia.Application.UseCases.Decks.List;
+﻿namespace Estudia.Application.UseCases.ListDecks;
 
 public interface IListDecksService
 {

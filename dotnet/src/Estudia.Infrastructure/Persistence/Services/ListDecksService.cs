@@ -1,5 +1,5 @@
-﻿using Estudia.Application.UseCases.Decks;
-using Estudia.Application.UseCases.Decks.List;
+﻿using Estudia.Application.UseCases;
+using Estudia.Application.UseCases.ListDecks;
 using Estudia.Infrastructure.Persistence.Extensions;
 
 namespace Estudia.Infrastructure.Persistence.Services;

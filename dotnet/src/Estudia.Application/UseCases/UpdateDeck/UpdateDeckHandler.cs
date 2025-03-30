@@ -1,7 +1,7 @@
-﻿using Estudia.Domain.Aggregates.Decks;
-using Estudia.Domain.Aggregates.Decks.Repositories;
+﻿using Estudia.Domain.Entities;
+using Estudia.Domain.Repositories;
 
-namespace Estudia.Application.UseCases.Decks.Update;
+namespace Estudia.Application.UseCases.UpdateDeck;
 
 public class UpdateDeckHandler(IDeckRepository repository) : ICommandHandler<UpdateDeckCommand, Result<DeckDto>>
 {

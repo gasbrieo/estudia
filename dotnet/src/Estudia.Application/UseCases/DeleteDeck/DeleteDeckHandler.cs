@@ -1,6 +1,6 @@
-﻿using Estudia.Domain.Aggregates.Decks.Repositories;
+﻿using Estudia.Domain.Repositories;
 
-namespace Estudia.Application.UseCases.Decks.Delete;
+namespace Estudia.Application.UseCases.DeleteDeck;
 
 public class DeleteDeckHandler(IDeckRepository repository) : ICommandHandler<DeleteDeckCommand, Result>
 {

@@ -1,4 +1,6 @@
-﻿namespace Estudia.Domain.Aggregates.Decks.Repositories;
+﻿using Estudia.Domain.Entities;
+
+namespace Estudia.Domain.Repositories;
 
 public interface IDeckRepository
 {

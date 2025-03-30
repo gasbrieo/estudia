@@ -13,7 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Estudia.Application\Estudia.Application.csproj" />
+	  <ProjectReference Include="..\Estudia.Application\Estudia.Application.csproj" />
 	</ItemGroup>
 
 </Project>

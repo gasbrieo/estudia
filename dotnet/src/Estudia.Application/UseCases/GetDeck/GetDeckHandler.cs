@@ -1,6 +1,6 @@
-﻿using Estudia.Domain.Aggregates.Decks.Repositories;
+﻿using Estudia.Domain.Repositories;
 
-namespace Estudia.Application.UseCases.Decks.Get;
+namespace Estudia.Application.UseCases.GetDeck;
 
 public class GetDeckHandler(IDeckRepository repository) : IQueryHandler<GetDeckQuery, Result<DeckDto>>
 {

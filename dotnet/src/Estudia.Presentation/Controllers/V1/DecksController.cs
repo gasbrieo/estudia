@@ -1,9 +1,9 @@
-﻿using Estudia.Application.UseCases.Decks;
-using Estudia.Application.UseCases.Decks.Create;
-using Estudia.Application.UseCases.Decks.Delete;
-using Estudia.Application.UseCases.Decks.Get;
-using Estudia.Application.UseCases.Decks.List;
-using Estudia.Application.UseCases.Decks.Update;
+﻿using Estudia.Application.UseCases;
+using Estudia.Application.UseCases.CreateDeck;
+using Estudia.Application.UseCases.DeleteDeck;
+using Estudia.Application.UseCases.GetDeck;
+using Estudia.Application.UseCases.ListDecks;
+using Estudia.Application.UseCases.UpdateDeck;
 using Estudia.Presentation.Requests.V1;
 
 namespace Estudia.Presentation.Controllers.V1;

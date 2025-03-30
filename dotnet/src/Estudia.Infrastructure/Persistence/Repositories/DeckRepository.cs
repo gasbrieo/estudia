@@ -1,5 +1,5 @@
-﻿using Estudia.Domain.Aggregates.Decks;
-using Estudia.Domain.Aggregates.Decks.Repositories;
+﻿using Estudia.Domain.Entities;
+using Estudia.Domain.Repositories;
 
 namespace Estudia.Infrastructure.Persistence.Repositories;
 
@@ -50,7 +50,7 @@ public class DeckRepository(AppDbContext context) : IDeckRepository
         foreach (var flashcard in flashcards)
         {
             var existingFlashcard = existingFlashcards
-                .SingleOrDefault(f => f.Id == flashcard.Id && f.Id != Guid.Empty);
+                .FirstOrDefault(f => f.Id == flashcard.Id && f.Id != Guid.Empty);
 
             if (existingFlashcard is null)
                 context.Entry(flashcard).State = EntityState.Added;

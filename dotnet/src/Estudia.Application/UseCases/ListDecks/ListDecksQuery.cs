@@ -1,3 +1,3 @@
-﻿namespace Estudia.Application.UseCases.Decks.List;
+﻿namespace Estudia.Application.UseCases.ListDecks;
 
 public record ListDecksQuery(int PageNumber, int PageSize) : IQuery<Result<PagedList<BriefDeckDto>>>;

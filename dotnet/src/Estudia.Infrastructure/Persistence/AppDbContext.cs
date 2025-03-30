@@ -1,4 +1,4 @@
-﻿using Estudia.Domain.Aggregates.Decks;
+﻿using Estudia.Domain.Entities;
 
 namespace Estudia.Infrastructure.Persistence;
 

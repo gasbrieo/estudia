@@ -1,4 +1,4 @@
-﻿namespace Estudia.Domain.Aggregates.Decks;
+﻿namespace Estudia.Domain.Entities;
 
 public class Flashcard(Guid deckId, string front, string back)
 {

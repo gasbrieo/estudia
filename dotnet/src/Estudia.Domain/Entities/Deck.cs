@@ -1,4 +1,4 @@
-﻿namespace Estudia.Domain.Aggregates.Decks;
+﻿namespace Estudia.Domain.Entities;
 
 public class Deck(string name) : IAggregateRoot
 {

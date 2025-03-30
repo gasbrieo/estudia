@@ -1,7 +1,7 @@
-﻿using Estudia.Domain.Aggregates.Decks;
-using Estudia.Domain.Aggregates.Decks.Repositories;
+﻿using Estudia.Domain.Entities;
+using Estudia.Domain.Repositories;
 
-namespace Estudia.Application.UseCases.Decks.Create;
+namespace Estudia.Application.UseCases.CreateDeck;
 
 public class CreateDeckHandler(IDeckRepository repository) : ICommandHandler<CreateDeckCommand, Result<DeckDto>>
 {

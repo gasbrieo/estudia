@@ -1,6 +1,6 @@
-﻿using Estudia.Domain.Aggregates.Decks;
+﻿using Estudia.Domain.Entities;
 
-namespace Estudia.Application.UseCases.Decks;
+namespace Estudia.Application.UseCases;
 
 public record DeckDto(Guid Id, string Name, List<FlashcardDto> Flashcards)
 {

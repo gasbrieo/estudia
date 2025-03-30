@@ -1,5 +1,5 @@
-﻿using Estudia.Application.UseCases.Decks.List;
-using Estudia.Domain.Aggregates.Decks.Repositories;
+﻿using Estudia.Application.UseCases.ListDecks;
+using Estudia.Domain.Repositories;
 using Estudia.Infrastructure.Persistence;
 using Estudia.Infrastructure.Persistence.Repositories;
 using Estudia.Infrastructure.Persistence.Services;
