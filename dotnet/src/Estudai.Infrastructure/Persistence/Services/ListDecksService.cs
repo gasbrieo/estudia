@@ -1,5 +1,4 @@
-﻿using Estudai.Application.UseCases;
-using Estudai.Application.UseCases.ListDecks;
+﻿using Estudai.Application.UseCases.Decks.List;
 using Estudai.Infrastructure.Persistence.Extensions;
 
 namespace Estudai.Infrastructure.Persistence.Services;

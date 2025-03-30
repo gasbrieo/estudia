@@ -1,9 +1,9 @@
-﻿using Estudai.Application.UseCases;
-using Estudai.Application.UseCases.CreateDeck;
-using Estudai.Application.UseCases.DeleteDeck;
-using Estudai.Application.UseCases.GetDeck;
-using Estudai.Application.UseCases.ListDecks;
-using Estudai.Application.UseCases.UpdateDeck;
+﻿using Estudai.Application.UseCases.Decks.Create;
+using Estudai.Application.UseCases.Decks.Delete;
+using Estudai.Application.UseCases.Decks.Get;
+using Estudai.Application.UseCases.Decks.GetQuestion;
+using Estudai.Application.UseCases.Decks.List;
+using Estudai.Application.UseCases.Decks.Update;
 using Estudai.Presentation.Requests.V1;
 
 namespace Estudai.Presentation.Controllers.V1;
@@ -18,10 +18,10 @@ public class DecksController(IMediator mediator) : BaseController
         return result.ToActionResult(this);
     }
 
-    [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetDeck(Guid id, CancellationToken cancellationToken)
+    [HttpGet("{deckId:guid}")]
+    public async Task<IActionResult> GetDeck(Guid deckId, CancellationToken cancellationToken)
     {
-        var query = new GetDeckQuery(id);
+        var query = new GetDeckQuery(deckId);
         var result = await mediator.Send(query, cancellationToken);
         return result.ToActionResult(this);
     }
@@ -31,27 +31,35 @@ public class DecksController(IMediator mediator) : BaseController
     {
         var command = new CreateDeckCommand(
             request.Name,
-            [.. request.Flashcards.Select(f => new FlashcardInputDto(f.Front, f.Back))]);
+            [.. request.Flashcards.Select(f => new CreateFlashcardDto(f.Front, f.Back))]);
         var result = await mediator.Send(command, cancellationToken);
         return result.ToActionResult(this);
     }
 
-    [HttpPut("{id:guid}")]
-    public async Task<IActionResult> UpdateDeck(Guid id, [FromBody] UpdateDeckRequest request, CancellationToken cancellationToken)
+    [HttpPut("{deckId:guid}")]
+    public async Task<IActionResult> UpdateDeck(Guid deckId, [FromBody] UpdateDeckRequest request, CancellationToken cancellationToken)
     {
         var command = new UpdateDeckCommand(
-            id,
+            deckId,
             request.Name,
-            [.. request.Flashcards.Select(f => new FlashcardInputDto(f.Front, f.Back))]);
+            [.. request.Flashcards.Select(f => new CreateFlashcardDto(f.Front, f.Back))]);
         var result = await mediator.Send(command, cancellationToken);
         return result.ToActionResult(this);
     }
 
-    [HttpDelete("{id:guid}")]
-    public async Task<IActionResult> DeleteDeck(Guid id, CancellationToken cancellationToken)
+    [HttpDelete("{deckId:guid}")]
+    public async Task<IActionResult> DeleteDeck(Guid deckId, CancellationToken cancellationToken)
     {
-        var command = new DeleteDeckCommand(id);
+        var command = new DeleteDeckCommand(deckId);
         var result = await mediator.Send(command, cancellationToken);
+        return result.ToActionResult(this);
+    }
+
+    [HttpGet("{deckId:guid}/flashcards/{flashcardId:guid}:question-mode")]
+    public async Task<IActionResult> GetQuestion(Guid deckId, Guid flashcardId, CancellationToken cancellationToken)
+    {
+        var query = new GetQuestionQuery(deckId, flashcardId);
+        var result = await mediator.Send(query, cancellationToken);
         return result.ToActionResult(this);
     }
 }

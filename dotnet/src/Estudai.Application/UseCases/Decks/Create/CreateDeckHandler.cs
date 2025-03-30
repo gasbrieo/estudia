@@ -1,7 +1,7 @@
-﻿using Estudai.Domain.Entities;
-using Estudai.Domain.Repositories;
+﻿using Estudai.Domain.Aggregates.Decks;
+using Estudai.Domain.Aggregates.Decks.Repositories;
 
-namespace Estudai.Application.UseCases.CreateDeck;
+namespace Estudai.Application.UseCases.Decks.Create;
 
 public class CreateDeckHandler(IDeckRepository repository) : ICommandHandler<CreateDeckCommand, Result<DeckDto>>
 {

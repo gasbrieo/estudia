@@ -1,4 +1,4 @@
-﻿using Estudai.Domain.Entities;
+﻿using Estudai.Domain.Aggregates.Decks;
 
 namespace Estudai.Infrastructure.Persistence;
 

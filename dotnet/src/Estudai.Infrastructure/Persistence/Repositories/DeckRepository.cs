@@ -1,5 +1,5 @@
-﻿using Estudai.Domain.Entities;
-using Estudai.Domain.Repositories;
+﻿using Estudai.Domain.Aggregates.Decks;
+using Estudai.Domain.Aggregates.Decks.Repositories;
 
 namespace Estudai.Infrastructure.Persistence.Repositories;
 

@@ -1,13 +1,13 @@
-﻿using Estudai.Domain.Entities;
-using Estudai.Domain.Repositories;
+﻿using Estudai.Domain.Aggregates.Decks;
+using Estudai.Domain.Aggregates.Decks.Repositories;
 
-namespace Estudai.Application.UseCases.UpdateDeck;
+namespace Estudai.Application.UseCases.Decks.Update;
 
 public class UpdateDeckHandler(IDeckRepository repository) : ICommandHandler<UpdateDeckCommand, Result<DeckDto>>
 {
     public async Task<Result<DeckDto>> Handle(UpdateDeckCommand request, CancellationToken cancellationToken)
     {
-        var deck = await repository.GetByIdAsync(request.Id, cancellationToken);
+        var deck = await repository.GetByIdAsync(request.DeckId, cancellationToken);
 
         if (deck is null)
             return Result.NotFound();

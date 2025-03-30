@@ -1,4 +1,4 @@
-﻿namespace Estudai.Application.UseCases.ListDecks;
+﻿namespace Estudai.Application.UseCases.Decks.List;
 
 public class ListDecksHandler(IListDecksService service) : IQueryHandler<ListDecksQuery, Result<PagedList<BriefDeckDto>>>
 {

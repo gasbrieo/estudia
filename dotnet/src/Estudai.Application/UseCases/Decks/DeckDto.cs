@@ -1,8 +1,8 @@
-﻿using Estudai.Domain.Entities;
+﻿using Estudai.Domain.Aggregates.Decks;
 
-namespace Estudai.Application.UseCases;
+namespace Estudai.Application.UseCases.Decks;
 
-public record DeckDto(Guid Id, string Name, List<FlashcardDto> Flashcards)
+public record DeckDto(Guid DeckId, string Name, List<FlashcardDto> Flashcards)
 {
     public static DeckDto FromAggregate(Deck deck)
     {

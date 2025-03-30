@@ -1,6 +1,4 @@
-﻿using Estudai.Domain.Entities;
-
-namespace Estudai.Domain.Repositories;
+﻿namespace Estudai.Domain.Aggregates.Decks.Repositories;
 
 public interface IDeckRepository
 {
