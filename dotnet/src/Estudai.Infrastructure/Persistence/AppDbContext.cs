@@ -6,9 +6,4 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 {
     public DbSet<Deck> Decks { get; set; } = null!;
     public DbSet<Flashcard> Flashcards { get; set; } = null!;
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-    }
 }

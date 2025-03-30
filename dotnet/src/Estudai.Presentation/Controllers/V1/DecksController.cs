@@ -1,7 +1,6 @@
 ﻿using Estudai.Application.UseCases.Decks.Create;
 using Estudai.Application.UseCases.Decks.Delete;
 using Estudai.Application.UseCases.Decks.Get;
-using Estudai.Application.UseCases.Decks.GetQuestion;
 using Estudai.Application.UseCases.Decks.List;
 using Estudai.Application.UseCases.Decks.Update;
 using Estudai.Presentation.Requests.V1;
@@ -52,14 +51,6 @@ public class DecksController(IMediator mediator) : BaseController
     {
         var command = new DeleteDeckCommand(deckId);
         var result = await mediator.Send(command, cancellationToken);
-        return result.ToActionResult(this);
-    }
-
-    [HttpGet("{deckId:guid}/flashcards/{flashcardId:guid}:question-mode")]
-    public async Task<IActionResult> GetQuestion(Guid deckId, Guid flashcardId, CancellationToken cancellationToken)
-    {
-        var query = new GetQuestionQuery(deckId, flashcardId);
-        var result = await mediator.Send(query, cancellationToken);
         return result.ToActionResult(this);
     }
 }
