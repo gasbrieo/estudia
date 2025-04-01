@@ -25,7 +25,7 @@ export const useAuthStore = create<AuthState & AuthAction>()(
         set({
           authenticated: true,
           user: {
-            name: "Gabriel",
+            name: "Gabriel Abreu",
             avatar: "https://api.dicebear.com/7.x/initials/svg?seed=G",
           },
         });
