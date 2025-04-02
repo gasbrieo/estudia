@@ -1,8 +1,8 @@
 import { type FC, type MouseEvent, useState } from "react";
 
-import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import FlagRoundedIcon from "@mui/icons-material/FlagRounded";
 import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
-import Divider, { dividerClasses } from "@mui/material/Divider";
+import { dividerClasses } from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import { listClasses } from "@mui/material/List";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -12,13 +12,11 @@ import MuiMenuItem from "@mui/material/MenuItem";
 import { paperClasses } from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 
-import MenuItemLink from "@/components/MenuItemLink";
-
 const MenuItem = styled(MuiMenuItem)({
   margin: "2px 0",
 });
 
-const UserMenu: FC = () => {
+const OptionsMenu: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -60,17 +58,15 @@ const UserMenu: FC = () => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItemLink to="/profile">Profile</MenuItemLink>
-        <Divider />
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
-            <LogoutRoundedIcon fontSize="small" />
+            <FlagRoundedIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText>Logout</ListItemText>
+          <ListItemText>Denunciar</ListItemText>
         </MenuItem>
       </Menu>
     </>
   );
 };
 
-export default UserMenu;
+export default OptionsMenu;
