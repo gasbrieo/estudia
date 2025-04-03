@@ -7,11 +7,10 @@ interface ListItemLinkProps extends ListItemButtonProps {
   to: LinkProps["to"];
 }
 
-const ListItemLink: FC<ListItemLinkProps> = ({ children, to, ...props }) => {
+const ListItemLink: FC<ListItemLinkProps> = ({ children, ...props }) => {
   return (
     <ListItemButton
       component={Link}
-      to={to}
       {...props}
     >
       {children}

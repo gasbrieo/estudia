@@ -2,7 +2,6 @@ import type { FC } from "react";
 
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
-import TopicRoundedIcon from "@mui/icons-material/TopicRounded";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -25,17 +24,6 @@ const MenuContent: FC = () => {
               <HomeRoundedIcon />
             </ListItemIcon>
             <ListItemText primary="Home" />
-          </ListItemLink>
-        </ListItem>
-        <ListItem
-          disablePadding
-          sx={{ display: "block" }}
-        >
-          <ListItemLink to="/">
-            <ListItemIcon>
-              <TopicRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Library" />
           </ListItemLink>
         </ListItem>
         <ListItem

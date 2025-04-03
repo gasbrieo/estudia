@@ -7,11 +7,10 @@ interface MenuItemLinkProps extends MenuItemProps {
   to: LinkProps["to"];
 }
 
-const MenuItemLink: FC<MenuItemLinkProps> = ({ children, to, ...props }) => {
+const MenuItemLink: FC<MenuItemLinkProps> = ({ children, ...props }) => {
   return (
     <MenuItem
       component={Link}
-      to={to}
       {...props}
     >
       {children}

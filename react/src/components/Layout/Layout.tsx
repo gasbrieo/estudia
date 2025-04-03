@@ -24,7 +24,7 @@ const Layout: FC = () => {
           sx={{
             alignItems: "center",
             mx: 3,
-            mt: { xs: 10, md: 3 },
+            mt: { xs: 8, md: 0 },
             pb: 5,
           }}
         >

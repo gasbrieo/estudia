@@ -1,32 +1,27 @@
 import { type FC } from "react";
 
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import ShareIcon from "@mui/icons-material/Share";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardHeader from "@mui/material/CardHeader";
-import IconButton from "@mui/material/IconButton";
+import CardActions from "@mui/material/CardActions";
+
+import IconButtonLink from "../IconButtonLink";
 
 interface DeckCardProps {
+  id: string;
   title: string;
   subheader: string;
   avatar: string;
 }
 
-const DeckCard: FC<DeckCardProps> = ({ title, subheader, avatar }) => {
+const DeckCard: FC<DeckCardProps> = ({ id, title, subheader, avatar }) => {
   return (
     <Card
       variant="outlined"
       sx={{ height: "100%", flexGrow: 1 }}
     >
       <CardHeader
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
         avatar={
           <Avatar
             alt={subheader}
@@ -42,12 +37,13 @@ const DeckCard: FC<DeckCardProps> = ({ title, subheader, avatar }) => {
         title={title}
       />
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
+        <IconButtonLink
+          aria-label="view"
+          to="/decks/$deckId/view"
+          params={{ deckId: id }}
+        >
+          <ArrowForwardIcon />
+        </IconButtonLink>
       </CardActions>
     </Card>
   );
