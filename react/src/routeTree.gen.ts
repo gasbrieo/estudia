@@ -11,197 +11,37 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as IndexImport } from './routes/index'
-import { Route as ProfileIndexImport } from './routes/profile/index'
-import { Route as DecksCreateImport } from './routes/decks/create'
-import { Route as DecksDeckIdViewImport } from './routes/decks/$deckId/view'
-import { Route as DecksDeckIdReviewImport } from './routes/decks/$deckId/review'
-import { Route as DecksDeckIdEditImport } from './routes/decks/$deckId/edit'
-import { Route as DecksDeckIdChallengeImport } from './routes/decks/$deckId/challenge'
 
 // Create/Update Routes
-
-const IndexRoute = IndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ProfileIndexRoute = ProfileIndexImport.update({
-  id: '/profile/',
-  path: '/profile/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DecksCreateRoute = DecksCreateImport.update({
-  id: '/decks/create',
-  path: '/decks/create',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DecksDeckIdViewRoute = DecksDeckIdViewImport.update({
-  id: '/decks/$deckId/view',
-  path: '/decks/$deckId/view',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DecksDeckIdReviewRoute = DecksDeckIdReviewImport.update({
-  id: '/decks/$deckId/review',
-  path: '/decks/$deckId/review',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DecksDeckIdEditRoute = DecksDeckIdEditImport.update({
-  id: '/decks/$deckId/edit',
-  path: '/decks/$deckId/edit',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DecksDeckIdChallengeRoute = DecksDeckIdChallengeImport.update({
-  id: '/decks/$deckId/challenge',
-  path: '/decks/$deckId/challenge',
-  getParentRoute: () => rootRoute,
-} as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/decks/create': {
-      id: '/decks/create'
-      path: '/decks/create'
-      fullPath: '/decks/create'
-      preLoaderRoute: typeof DecksCreateImport
-      parentRoute: typeof rootRoute
-    }
-    '/profile/': {
-      id: '/profile/'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/decks/$deckId/challenge': {
-      id: '/decks/$deckId/challenge'
-      path: '/decks/$deckId/challenge'
-      fullPath: '/decks/$deckId/challenge'
-      preLoaderRoute: typeof DecksDeckIdChallengeImport
-      parentRoute: typeof rootRoute
-    }
-    '/decks/$deckId/edit': {
-      id: '/decks/$deckId/edit'
-      path: '/decks/$deckId/edit'
-      fullPath: '/decks/$deckId/edit'
-      preLoaderRoute: typeof DecksDeckIdEditImport
-      parentRoute: typeof rootRoute
-    }
-    '/decks/$deckId/review': {
-      id: '/decks/$deckId/review'
-      path: '/decks/$deckId/review'
-      fullPath: '/decks/$deckId/review'
-      preLoaderRoute: typeof DecksDeckIdReviewImport
-      parentRoute: typeof rootRoute
-    }
-    '/decks/$deckId/view': {
-      id: '/decks/$deckId/view'
-      path: '/decks/$deckId/view'
-      fullPath: '/decks/$deckId/view'
-      preLoaderRoute: typeof DecksDeckIdViewImport
-      parentRoute: typeof rootRoute
-    }
-  }
+  interface FileRoutesByPath {}
 }
 
 // Create and export the route tree
 
-export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/decks/create': typeof DecksCreateRoute
-  '/profile': typeof ProfileIndexRoute
-  '/decks/$deckId/challenge': typeof DecksDeckIdChallengeRoute
-  '/decks/$deckId/edit': typeof DecksDeckIdEditRoute
-  '/decks/$deckId/review': typeof DecksDeckIdReviewRoute
-  '/decks/$deckId/view': typeof DecksDeckIdViewRoute
-}
+export interface FileRoutesByFullPath {}
 
-export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/decks/create': typeof DecksCreateRoute
-  '/profile': typeof ProfileIndexRoute
-  '/decks/$deckId/challenge': typeof DecksDeckIdChallengeRoute
-  '/decks/$deckId/edit': typeof DecksDeckIdEditRoute
-  '/decks/$deckId/review': typeof DecksDeckIdReviewRoute
-  '/decks/$deckId/view': typeof DecksDeckIdViewRoute
-}
+export interface FileRoutesByTo {}
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/decks/create': typeof DecksCreateRoute
-  '/profile/': typeof ProfileIndexRoute
-  '/decks/$deckId/challenge': typeof DecksDeckIdChallengeRoute
-  '/decks/$deckId/edit': typeof DecksDeckIdEditRoute
-  '/decks/$deckId/review': typeof DecksDeckIdReviewRoute
-  '/decks/$deckId/view': typeof DecksDeckIdViewRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/decks/create'
-    | '/profile'
-    | '/decks/$deckId/challenge'
-    | '/decks/$deckId/edit'
-    | '/decks/$deckId/review'
-    | '/decks/$deckId/view'
+  fullPaths: never
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/decks/create'
-    | '/profile'
-    | '/decks/$deckId/challenge'
-    | '/decks/$deckId/edit'
-    | '/decks/$deckId/review'
-    | '/decks/$deckId/view'
-  id:
-    | '__root__'
-    | '/'
-    | '/decks/create'
-    | '/profile/'
-    | '/decks/$deckId/challenge'
-    | '/decks/$deckId/edit'
-    | '/decks/$deckId/review'
-    | '/decks/$deckId/view'
+  to: never
+  id: '__root__'
   fileRoutesById: FileRoutesById
 }
 
-export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  DecksCreateRoute: typeof DecksCreateRoute
-  ProfileIndexRoute: typeof ProfileIndexRoute
-  DecksDeckIdChallengeRoute: typeof DecksDeckIdChallengeRoute
-  DecksDeckIdEditRoute: typeof DecksDeckIdEditRoute
-  DecksDeckIdReviewRoute: typeof DecksDeckIdReviewRoute
-  DecksDeckIdViewRoute: typeof DecksDeckIdViewRoute
-}
+export interface RootRouteChildren {}
 
-const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  DecksCreateRoute: DecksCreateRoute,
-  ProfileIndexRoute: ProfileIndexRoute,
-  DecksDeckIdChallengeRoute: DecksDeckIdChallengeRoute,
-  DecksDeckIdEditRoute: DecksDeckIdEditRoute,
-  DecksDeckIdReviewRoute: DecksDeckIdReviewRoute,
-  DecksDeckIdViewRoute: DecksDeckIdViewRoute,
-}
+const rootRouteChildren: RootRouteChildren = {}
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
@@ -212,36 +52,7 @@ export const routeTree = rootRoute
   "routes": {
     "__root__": {
       "filePath": "__root.tsx",
-      "children": [
-        "/",
-        "/decks/create",
-        "/profile/",
-        "/decks/$deckId/challenge",
-        "/decks/$deckId/edit",
-        "/decks/$deckId/review",
-        "/decks/$deckId/view"
-      ]
-    },
-    "/": {
-      "filePath": "index.tsx"
-    },
-    "/decks/create": {
-      "filePath": "decks/create.tsx"
-    },
-    "/profile/": {
-      "filePath": "profile/index.tsx"
-    },
-    "/decks/$deckId/challenge": {
-      "filePath": "decks/$deckId/challenge.tsx"
-    },
-    "/decks/$deckId/edit": {
-      "filePath": "decks/$deckId/edit.tsx"
-    },
-    "/decks/$deckId/review": {
-      "filePath": "decks/$deckId/review.tsx"
-    },
-    "/decks/$deckId/view": {
-      "filePath": "decks/$deckId/view.tsx"
+      "children": []
     }
   }
 }
