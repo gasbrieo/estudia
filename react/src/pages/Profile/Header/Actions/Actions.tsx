@@ -15,7 +15,7 @@ const Actions: FC = () => {
         startIcon={<EditIcon />}
         onClick={() => {}}
       >
-        Editar
+        Edit
       </Button>
     </Stack>
   );

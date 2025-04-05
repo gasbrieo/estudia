@@ -4,7 +4,7 @@ import QuizIcon from "@mui/icons-material/Quiz";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import Stack from "@mui/material/Stack";
 
-import ButtonLink from "@/components/ButtonLink";
+import ButtonLink from "@/components/Links/ButtonLink";
 
 const QuizActions: FC = () => {
   return (

@@ -12,16 +12,13 @@ const Filters: FC = () => {
 
   return (
     <Stack
+      direction={{ xs: "column", md: "row" }}
       sx={{
         gap: 1,
-        flexDirection: {
-          xs: "column",
-          sm: "row",
-        },
       }}
     >
       <TextField
-        placeholder="Procurar..."
+        placeholder="Search..."
         variant="outlined"
         size="small"
         fullWidth
@@ -40,8 +37,8 @@ const Filters: FC = () => {
         size="small"
         onChange={(e) => setDunno(e.target.value as number)}
       >
-        <MenuItem value={1}>Criados por mim</MenuItem>
-        <MenuItem value={2}>Compartilhados comigo</MenuItem>
+        <MenuItem value={1}>Created by me</MenuItem>
+        <MenuItem value={2}>Shared with me</MenuItem>
       </Select>
     </Stack>
   );

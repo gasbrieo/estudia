@@ -4,8 +4,9 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 
 import Header from "./Header";
+import Questions from "./Questions";
 
-const ChallengeMode: FC = () => {
+const QuizDetails: FC = () => {
   return (
     <Stack
       spacing={2}
@@ -17,12 +18,13 @@ const ChallengeMode: FC = () => {
       }}
     >
       <Box sx={{ width: "100%", maxWidth: { sm: "100%", md: "1280px" } }}>
-        <Stack spacing={1}>
+        <Stack spacing={2}>
           <Header />
+          <Questions />
         </Stack>
       </Box>
     </Stack>
   );
 };
 
-export default ChallengeMode;
+export default QuizDetails;

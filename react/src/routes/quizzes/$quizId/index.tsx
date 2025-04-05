@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import ViewQuiz from "@/pages/ViewQuiz";
+import QuizDetails from "@/pages/QuizDetails";
 
 export const Route = createFileRoute("/quizzes/$quizId/")({
-  component: ViewQuiz,
+  component: QuizDetails,
 });

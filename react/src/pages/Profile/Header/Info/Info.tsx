@@ -40,7 +40,7 @@ const Info: FC = () => {
         >
           <Chip
             icon={<MenuBookIcon fontSize="small" />}
-            label="Professor"
+            label="Teacher"
             size="small"
           />
         </Stack>

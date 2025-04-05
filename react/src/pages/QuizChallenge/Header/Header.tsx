@@ -3,7 +3,7 @@ import type { FC } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import Stack from "@mui/material/Stack";
 
-import IconButtonLink from "@/components/IconButtonLink";
+import IconButtonLink from "@/components/Links/IconButtonLink";
 
 const Header: FC = () => {
   const quizId = "1";

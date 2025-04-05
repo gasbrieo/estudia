@@ -11,7 +11,7 @@ import Chip from "@mui/material/Chip";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
-import Link from "@/components/Link";
+import Link from "@/components/Links/Link";
 
 interface ListItemProps {
   id: string;

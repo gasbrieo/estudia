@@ -4,9 +4,9 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 
 import Header from "./Header";
-import Questions from "./Questions";
+import Stage from "./Stage";
 
-const ViewQuiz: FC = () => {
+const QuizReview: FC = () => {
   return (
     <Stack
       spacing={2}
@@ -18,13 +18,13 @@ const ViewQuiz: FC = () => {
       }}
     >
       <Box sx={{ width: "100%", maxWidth: { sm: "100%", md: "1280px" } }}>
-        <Stack spacing={2}>
+        <Stack spacing={1}>
           <Header />
-          <Questions />
+          <Stage />
         </Stack>
       </Box>
     </Stack>
   );
 };
 
-export default ViewQuiz;
+export default QuizReview;

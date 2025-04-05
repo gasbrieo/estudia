@@ -6,7 +6,7 @@ import Stack from "@mui/material/Stack";
 import Header from "./Header";
 import Stage from "./Stage";
 
-const ReviewMode: FC = () => {
+const QuizChallenge: FC = () => {
   return (
     <Stack
       spacing={2}
@@ -27,4 +27,4 @@ const ReviewMode: FC = () => {
   );
 };
 
-export default ReviewMode;
+export default QuizChallenge;
