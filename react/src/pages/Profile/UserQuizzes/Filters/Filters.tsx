@@ -12,8 +12,13 @@ const Filters: FC = () => {
 
   return (
     <Stack
-      direction="row"
-      sx={{ gap: 1 }}
+      sx={{
+        gap: 1,
+        flexDirection: {
+          xs: "column",
+          sm: "row",
+        },
+      }}
     >
       <TextField
         placeholder="Procurar..."

@@ -11,7 +11,6 @@ const Stats: FC = () => {
     <Grid
       container
       spacing={2}
-      sx={{ mt: 2 }}
     >
       {stats.map((item) => (
         <Grid key={item.label}>
