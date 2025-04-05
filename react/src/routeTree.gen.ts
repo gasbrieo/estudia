@@ -11,37 +11,99 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as IndexImport } from './routes/index'
+import { Route as ProfileUsernameImport } from './routes/profile/$username'
+import { Route as QuizzesQuizIdIndexImport } from './routes/quizzes/$quizId/index'
 
 // Create/Update Routes
+
+const IndexRoute = IndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProfileUsernameRoute = ProfileUsernameImport.update({
+  id: '/profile/$username',
+  path: '/profile/$username',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const QuizzesQuizIdIndexRoute = QuizzesQuizIdIndexImport.update({
+  id: '/quizzes/$quizId/',
+  path: '/quizzes/$quizId/',
+  getParentRoute: () => rootRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {}
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/profile/$username': {
+      id: '/profile/$username'
+      path: '/profile/$username'
+      fullPath: '/profile/$username'
+      preLoaderRoute: typeof ProfileUsernameImport
+      parentRoute: typeof rootRoute
+    }
+    '/quizzes/$quizId/': {
+      id: '/quizzes/$quizId/'
+      path: '/quizzes/$quizId'
+      fullPath: '/quizzes/$quizId'
+      preLoaderRoute: typeof QuizzesQuizIdIndexImport
+      parentRoute: typeof rootRoute
+    }
+  }
 }
 
 // Create and export the route tree
 
-export interface FileRoutesByFullPath {}
+export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
+  '/profile/$username': typeof ProfileUsernameRoute
+  '/quizzes/$quizId': typeof QuizzesQuizIdIndexRoute
+}
 
-export interface FileRoutesByTo {}
+export interface FileRoutesByTo {
+  '/': typeof IndexRoute
+  '/profile/$username': typeof ProfileUsernameRoute
+  '/quizzes/$quizId': typeof QuizzesQuizIdIndexRoute
+}
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
+  '/': typeof IndexRoute
+  '/profile/$username': typeof ProfileUsernameRoute
+  '/quizzes/$quizId/': typeof QuizzesQuizIdIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: never
+  fullPaths: '/' | '/profile/$username' | '/quizzes/$quizId'
   fileRoutesByTo: FileRoutesByTo
-  to: never
-  id: '__root__'
+  to: '/' | '/profile/$username' | '/quizzes/$quizId'
+  id: '__root__' | '/' | '/profile/$username' | '/quizzes/$quizId/'
   fileRoutesById: FileRoutesById
 }
 
-export interface RootRouteChildren {}
+export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
+  ProfileUsernameRoute: typeof ProfileUsernameRoute
+  QuizzesQuizIdIndexRoute: typeof QuizzesQuizIdIndexRoute
+}
 
-const rootRouteChildren: RootRouteChildren = {}
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  ProfileUsernameRoute: ProfileUsernameRoute,
+  QuizzesQuizIdIndexRoute: QuizzesQuizIdIndexRoute,
+}
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
@@ -52,7 +114,20 @@ export const routeTree = rootRoute
   "routes": {
     "__root__": {
       "filePath": "__root.tsx",
-      "children": []
+      "children": [
+        "/",
+        "/profile/$username",
+        "/quizzes/$quizId/"
+      ]
+    },
+    "/": {
+      "filePath": "index.ts"
+    },
+    "/profile/$username": {
+      "filePath": "profile/$username.tsx"
+    },
+    "/quizzes/$quizId/": {
+      "filePath": "quizzes/$quizId/index.tsx"
     }
   }
 }
