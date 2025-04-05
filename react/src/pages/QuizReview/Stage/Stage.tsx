@@ -25,10 +25,9 @@ const Stage: FC = () => {
 
   return (
     <Stack
-      direction="column"
       spacing={4}
       sx={{
-        height: "calc(100vh - 120px)",
+        height: "calc(100vh - 60px)",
         justifyContent: "center",
         alignItems: "center",
         overflow: "hidden",
@@ -36,11 +35,8 @@ const Stage: FC = () => {
     >
       <Box
         sx={{
-          width: "80%",
-          maxWidth: 800,
+          width: "100%",
           height: "60vh",
-          maxHeight: 800,
-          perspective: 1000,
           cursor: "pointer",
         }}
         onClick={handleFlip}
@@ -71,6 +67,9 @@ const Stage: FC = () => {
             <Typography
               variant="h5"
               align="center"
+              sx={{
+                fontWeight: 600,
+              }}
             >
               {flashcards[page - 1].statement}
             </Typography>

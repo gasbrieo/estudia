@@ -3,7 +3,6 @@ import type { FC } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 
-import Header from "./Header";
 import Stage from "./Stage";
 
 const QuizReview: FC = () => {
@@ -18,10 +17,7 @@ const QuizReview: FC = () => {
       }}
     >
       <Box sx={{ width: "100%", maxWidth: { sm: "100%", md: "1280px" } }}>
-        <Stack spacing={1}>
-          <Header />
-          <Stage />
-        </Stack>
+        <Stage />
       </Box>
     </Stack>
   );
