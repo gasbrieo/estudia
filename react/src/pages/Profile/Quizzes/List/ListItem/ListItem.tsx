@@ -11,7 +11,7 @@ import Chip from "@mui/material/Chip";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
-import Link from "@/components/Links/Link";
+import TypographyLink from "@/components/Links/TypographyLink";
 
 interface ListItemProps {
   id: string;
@@ -39,17 +39,23 @@ const ListItem: FC<ListItemProps> = ({ id, avatarUrl, name, description, tags })
             sx={{ width: 30, height: 30 }}
           />
         }
-        title={name}
+        title={
+          <TypographyLink
+            variant="subtitle2"
+            to="/quizzes/$quizId"
+            params={{ quizId: id }}
+            sx={{
+              textDecoration: "none",
+              color: "inherit",
+              "&:hover": { textDecoration: "underline" },
+            }}
+          >
+            {name}
+          </TypographyLink>
+        }
         slotProps={{
           avatar: {
             sx: { mr: 1 },
-          },
-          title: {
-            component: Link,
-            variant: "subtitle2",
-            underline: "hover",
-            to: "/quizzes/$quizId",
-            params: { quizId: id },
           },
         }}
         sx={{ pb: 0 }}

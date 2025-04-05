@@ -1,9 +1,10 @@
 import type { FC } from "react";
 
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+
+import AvatarLink from "@/components/Links/AvatarLink";
+import TypographyLink from "@/components/Links/TypographyLink";
 
 const Metadata: FC = () => {
   return (
@@ -12,24 +13,33 @@ const Metadata: FC = () => {
       spacing={1}
       sx={{ alignItems: "center" }}
     >
-      <Avatar
+      <AvatarLink
         src="https://api.dicebear.com/7.x/initials/svg?seed=G"
+        to="/profile/$username"
+        params={{ username: "gaberabreu" }}
         sx={{ width: 32, height: 32 }}
       />
-      <Box>
-        <Typography
+      <Stack spacing={0}>
+        <TypographyLink
           variant="body2"
-          sx={{ fontWeight: 600 }}
+          to="/profile/$username"
+          params={{ username: "gaberabreu" }}
+          sx={{
+            fontWeight: 600,
+            textDecoration: "none",
+            color: "inherit",
+            "&:hover": { textDecoration: "underline" },
+          }}
         >
           @gaberabreu
-        </Typography>
+        </TypographyLink>
         <Typography
           variant="caption"
           color="text.secondary"
         >
           Criado há 6 dias
         </Typography>
-      </Box>
+      </Stack>
     </Stack>
   );
 };
