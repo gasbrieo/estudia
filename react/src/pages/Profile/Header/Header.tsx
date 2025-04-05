@@ -7,20 +7,27 @@ import Actions from "./Actions";
 import Stats from "./Stats";
 import Info from "./Info";
 
-const UserInfo: FC = () => {
+const Header: FC = () => {
   return (
     <Paper
       variant="outlined"
       sx={{ p: 2 }}
     >
       <Stack
-        direction="row"
-        sx={{ alignItems: "flex-start", justifyContent: "space-between" }}
+        direction={{ xs: "column", md: "row" }}
+        spacing={2}
+        sx={{
+          height: "100%",
+          justifyContent: "space-between",
+        }}
       >
         <Info />
         <Stack
-          spacing={1}
-          sx={{ alignItems: "flex-end" }}
+          spacing={2}
+          sx={{
+            alignItems: { xs: "flex-start", md: "flex-end" },
+            justifyContent: "space-between",
+          }}
         >
           <Actions />
           <Stats />
@@ -30,4 +37,4 @@ const UserInfo: FC = () => {
   );
 };
 
-export default UserInfo;
+export default Header;

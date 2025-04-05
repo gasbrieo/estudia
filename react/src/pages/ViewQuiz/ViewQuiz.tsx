@@ -4,9 +4,9 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 
 import Header from "./Header";
-import Quizzes from "./Quizzes";
+import Questions from "./Questions";
 
-const Profile: FC = () => {
+const ViewQuiz: FC = () => {
   return (
     <Stack
       spacing={2}
@@ -20,11 +20,11 @@ const Profile: FC = () => {
       <Box sx={{ width: "100%", maxWidth: { sm: "100%", md: "1280px" } }}>
         <Stack spacing={2}>
           <Header />
-          <Quizzes />
+          <Questions />
         </Stack>
       </Box>
     </Stack>
   );
 };
 
-export default Profile;
+export default ViewQuiz;

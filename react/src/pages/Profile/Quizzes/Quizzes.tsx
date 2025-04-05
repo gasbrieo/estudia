@@ -3,7 +3,7 @@ import type { FC } from "react";
 import Filters from "./Filters";
 import List from "./List";
 
-const UserQuizzes: FC = () => {
+const Quizzes: FC = () => {
   return (
     <>
       <Filters />
@@ -12,4 +12,4 @@ const UserQuizzes: FC = () => {
   );
 };
 
-export default UserQuizzes;
+export default Quizzes;

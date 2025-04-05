@@ -22,7 +22,7 @@ const Info: FC = () => {
         <Stack spacing={0}>
           <Typography
             variant="subtitle1"
-            sx={{ fontWeight: "700" }}
+            sx={{ fontWeight: 700 }}
           >
             Gabriel Abreu
           </Typography>

@@ -1,7 +1,7 @@
 import type { FC } from "react";
 
 import EditIcon from "@mui/icons-material/Edit";
-import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
 const Actions: FC = () => {
@@ -10,12 +10,13 @@ const Actions: FC = () => {
       direction="row"
       spacing={1}
     >
-      <IconButton
-        aria-label="edit"
-        size="small"
+      <Button
+        variant="outlined"
+        startIcon={<EditIcon />}
+        onClick={() => {}}
       >
-        <EditIcon fontSize="small" />
-      </IconButton>
+        Editar
+      </Button>
     </Stack>
   );
 };
