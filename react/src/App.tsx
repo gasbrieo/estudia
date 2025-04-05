@@ -12,7 +12,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-const router = createRouter({
+export const router = createRouter({
   routeTree,
 });
 

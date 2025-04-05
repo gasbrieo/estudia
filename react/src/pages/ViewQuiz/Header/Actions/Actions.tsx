@@ -2,8 +2,9 @@ import type { FC } from "react";
 
 import QuizIcon from "@mui/icons-material/Quiz";
 import ViewInArIcon from "@mui/icons-material/ViewInAr";
-import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+
+import ButtonLink from "@/components/ButtonLink";
 
 const QuizActions: FC = () => {
   return (
@@ -11,20 +12,26 @@ const QuizActions: FC = () => {
       direction="row"
       spacing={1}
     >
-      <Button
+      <ButtonLink
         variant="outlined"
         startIcon={<QuizIcon />}
-        onClick={() => {}}
+        to="/quizzes/$quizId/flashcards"
+        params={{
+          quizId: "quizId",
+        }}
       >
         Answer
-      </Button>
-      <Button
+      </ButtonLink>
+      <ButtonLink
         variant="outlined"
         startIcon={<ViewInArIcon />}
-        onClick={() => {}}
+        to="/quizzes/$quizId/flashcards"
+        params={{
+          quizId: "quizId",
+        }}
       >
         Flashcards
-      </Button>
+      </ButtonLink>
     </Stack>
   );
 };

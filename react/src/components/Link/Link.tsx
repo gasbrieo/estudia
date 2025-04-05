@@ -1,22 +1,23 @@
-import type { FC } from "react";
+import { forwardRef } from "react";
 
 import MuiLink, { type LinkProps as MuiLinkProps } from "@mui/material/Link";
-import { Link as TanstackLink, type LinkProps as TanstackLinkProps } from "@tanstack/react-router";
+import { createLink } from "@tanstack/react-router";
 
-interface LinkProps extends MuiLinkProps {
-  to: TanstackLinkProps["to"];
-  params: TanstackLinkProps["params"];
-}
-
-const Link: FC<LinkProps> = ({ children, ...props }) => {
+const MUILinkAnchor = forwardRef<
+  HTMLAnchorElement,
+  MuiLinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>
+>((props, ref) => {
   return (
     <MuiLink
-      component={TanstackLink}
       {...props}
-    >
-      {children}
-    </MuiLink>
+      ref={ref}
+      component="a"
+    />
   );
-};
+});
+
+MUILinkAnchor.displayName = "MUILinkAnchor";
+
+const Link = createLink(MUILinkAnchor);
 
 export default Link;
