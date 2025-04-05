@@ -14,7 +14,8 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as ProfileUsernameImport } from './routes/profile/$username'
 import { Route as QuizzesQuizIdIndexImport } from './routes/quizzes/$quizId/index'
-import { Route as QuizzesQuizIdFlashcardsImport } from './routes/quizzes/$quizId/flashcards'
+import { Route as QuizzesQuizIdReviewImport } from './routes/quizzes/$quizId/review'
+import { Route as QuizzesQuizIdChallengeImport } from './routes/quizzes/$quizId/challenge'
 
 // Create/Update Routes
 
@@ -36,9 +37,15 @@ const QuizzesQuizIdIndexRoute = QuizzesQuizIdIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const QuizzesQuizIdFlashcardsRoute = QuizzesQuizIdFlashcardsImport.update({
-  id: '/quizzes/$quizId/flashcards',
-  path: '/quizzes/$quizId/flashcards',
+const QuizzesQuizIdReviewRoute = QuizzesQuizIdReviewImport.update({
+  id: '/quizzes/$quizId/review',
+  path: '/quizzes/$quizId/review',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const QuizzesQuizIdChallengeRoute = QuizzesQuizIdChallengeImport.update({
+  id: '/quizzes/$quizId/challenge',
+  path: '/quizzes/$quizId/challenge',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -60,11 +67,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileUsernameImport
       parentRoute: typeof rootRoute
     }
-    '/quizzes/$quizId/flashcards': {
-      id: '/quizzes/$quizId/flashcards'
-      path: '/quizzes/$quizId/flashcards'
-      fullPath: '/quizzes/$quizId/flashcards'
-      preLoaderRoute: typeof QuizzesQuizIdFlashcardsImport
+    '/quizzes/$quizId/challenge': {
+      id: '/quizzes/$quizId/challenge'
+      path: '/quizzes/$quizId/challenge'
+      fullPath: '/quizzes/$quizId/challenge'
+      preLoaderRoute: typeof QuizzesQuizIdChallengeImport
+      parentRoute: typeof rootRoute
+    }
+    '/quizzes/$quizId/review': {
+      id: '/quizzes/$quizId/review'
+      path: '/quizzes/$quizId/review'
+      fullPath: '/quizzes/$quizId/review'
+      preLoaderRoute: typeof QuizzesQuizIdReviewImport
       parentRoute: typeof rootRoute
     }
     '/quizzes/$quizId/': {
@@ -82,14 +96,16 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/profile/$username': typeof ProfileUsernameRoute
-  '/quizzes/$quizId/flashcards': typeof QuizzesQuizIdFlashcardsRoute
+  '/quizzes/$quizId/challenge': typeof QuizzesQuizIdChallengeRoute
+  '/quizzes/$quizId/review': typeof QuizzesQuizIdReviewRoute
   '/quizzes/$quizId': typeof QuizzesQuizIdIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/profile/$username': typeof ProfileUsernameRoute
-  '/quizzes/$quizId/flashcards': typeof QuizzesQuizIdFlashcardsRoute
+  '/quizzes/$quizId/challenge': typeof QuizzesQuizIdChallengeRoute
+  '/quizzes/$quizId/review': typeof QuizzesQuizIdReviewRoute
   '/quizzes/$quizId': typeof QuizzesQuizIdIndexRoute
 }
 
@@ -97,7 +113,8 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/profile/$username': typeof ProfileUsernameRoute
-  '/quizzes/$quizId/flashcards': typeof QuizzesQuizIdFlashcardsRoute
+  '/quizzes/$quizId/challenge': typeof QuizzesQuizIdChallengeRoute
+  '/quizzes/$quizId/review': typeof QuizzesQuizIdReviewRoute
   '/quizzes/$quizId/': typeof QuizzesQuizIdIndexRoute
 }
 
@@ -106,19 +123,22 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/profile/$username'
-    | '/quizzes/$quizId/flashcards'
+    | '/quizzes/$quizId/challenge'
+    | '/quizzes/$quizId/review'
     | '/quizzes/$quizId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/profile/$username'
-    | '/quizzes/$quizId/flashcards'
+    | '/quizzes/$quizId/challenge'
+    | '/quizzes/$quizId/review'
     | '/quizzes/$quizId'
   id:
     | '__root__'
     | '/'
     | '/profile/$username'
-    | '/quizzes/$quizId/flashcards'
+    | '/quizzes/$quizId/challenge'
+    | '/quizzes/$quizId/review'
     | '/quizzes/$quizId/'
   fileRoutesById: FileRoutesById
 }
@@ -126,14 +146,16 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ProfileUsernameRoute: typeof ProfileUsernameRoute
-  QuizzesQuizIdFlashcardsRoute: typeof QuizzesQuizIdFlashcardsRoute
+  QuizzesQuizIdChallengeRoute: typeof QuizzesQuizIdChallengeRoute
+  QuizzesQuizIdReviewRoute: typeof QuizzesQuizIdReviewRoute
   QuizzesQuizIdIndexRoute: typeof QuizzesQuizIdIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ProfileUsernameRoute: ProfileUsernameRoute,
-  QuizzesQuizIdFlashcardsRoute: QuizzesQuizIdFlashcardsRoute,
+  QuizzesQuizIdChallengeRoute: QuizzesQuizIdChallengeRoute,
+  QuizzesQuizIdReviewRoute: QuizzesQuizIdReviewRoute,
   QuizzesQuizIdIndexRoute: QuizzesQuizIdIndexRoute,
 }
 
@@ -149,7 +171,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/profile/$username",
-        "/quizzes/$quizId/flashcards",
+        "/quizzes/$quizId/challenge",
+        "/quizzes/$quizId/review",
         "/quizzes/$quizId/"
       ]
     },
@@ -159,8 +182,11 @@ export const routeTree = rootRoute
     "/profile/$username": {
       "filePath": "profile/$username.tsx"
     },
-    "/quizzes/$quizId/flashcards": {
-      "filePath": "quizzes/$quizId/flashcards.tsx"
+    "/quizzes/$quizId/challenge": {
+      "filePath": "quizzes/$quizId/challenge.tsx"
+    },
+    "/quizzes/$quizId/review": {
+      "filePath": "quizzes/$quizId/review.tsx"
     },
     "/quizzes/$quizId/": {
       "filePath": "quizzes/$quizId/index.tsx"
