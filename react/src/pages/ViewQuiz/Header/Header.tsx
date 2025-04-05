@@ -4,8 +4,8 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 
 import Actions from "./Actions";
-import Audity from "./Audity";
 import Info from "./Info";
+import Metadata from "./Metadata";
 
 const Header: FC = () => {
   return (
@@ -30,7 +30,7 @@ const Header: FC = () => {
           }}
         >
           <Actions />
-          <Audity />
+          <Metadata />
         </Stack>
       </Stack>
     </Paper>

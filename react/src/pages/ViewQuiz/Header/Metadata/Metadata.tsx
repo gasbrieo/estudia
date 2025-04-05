@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 
-const Audity: FC = () => {
+const Metadata: FC = () => {
   return (
     <Stack
       direction="row"
@@ -34,4 +34,4 @@ const Audity: FC = () => {
   );
 };
 
-export default Audity;
+export default Metadata;
