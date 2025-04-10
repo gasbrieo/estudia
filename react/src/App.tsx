@@ -1,10 +1,11 @@
-import type { FC } from "react";
+import { FC } from "react";
 
 import CssBaseline from "@mui/material/CssBaseline";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 
+import { useAuthStore } from "./stores/authStore";
 import AppTheme from "./theme/AppTheme";
 
 import { routeTree } from "./routeTree.gen";
@@ -16,6 +17,9 @@ import "@fontsource/roboto/700.css";
 
 const router = createRouter({
   routeTree,
+  context: {
+    auth: undefined!,
+  },
 });
 
 declare module "@tanstack/react-router" {
@@ -27,12 +31,17 @@ declare module "@tanstack/react-router" {
 const queryClient = new QueryClient();
 
 const App: FC = () => {
+  const auth = useAuthStore((state) => state);
+
   return (
     <AppTheme>
       <CssBaseline enableColorScheme />
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
-        <RouterProvider router={router} />
+        <RouterProvider
+          context={{ auth }}
+          router={router}
+        />
       </QueryClientProvider>
     </AppTheme>
   );

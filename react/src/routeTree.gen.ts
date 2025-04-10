@@ -11,37 +11,138 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as PublicImport } from './routes/_public'
+import { Route as ProtectedImport } from './routes/_protected'
+import { Route as ProtectedIndexImport } from './routes/_protected/index'
+import { Route as PublicLoginImport } from './routes/_public/login'
 
 // Create/Update Routes
+
+const PublicRoute = PublicImport.update({
+  id: '/_public',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProtectedRoute = ProtectedImport.update({
+  id: '/_protected',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProtectedIndexRoute = ProtectedIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProtectedRoute,
+} as any)
+
+const PublicLoginRoute = PublicLoginImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => PublicRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {}
+  interface FileRoutesByPath {
+    '/_protected': {
+      id: '/_protected'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof ProtectedImport
+      parentRoute: typeof rootRoute
+    }
+    '/_public': {
+      id: '/_public'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof PublicImport
+      parentRoute: typeof rootRoute
+    }
+    '/_public/login': {
+      id: '/_public/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof PublicLoginImport
+      parentRoute: typeof PublicImport
+    }
+    '/_protected/': {
+      id: '/_protected/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof ProtectedIndexImport
+      parentRoute: typeof ProtectedImport
+    }
+  }
 }
 
 // Create and export the route tree
 
-export interface FileRoutesByFullPath {}
+interface ProtectedRouteChildren {
+  ProtectedIndexRoute: typeof ProtectedIndexRoute
+}
 
-export interface FileRoutesByTo {}
+const ProtectedRouteChildren: ProtectedRouteChildren = {
+  ProtectedIndexRoute: ProtectedIndexRoute,
+}
+
+const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
+  ProtectedRouteChildren,
+)
+
+interface PublicRouteChildren {
+  PublicLoginRoute: typeof PublicLoginRoute
+}
+
+const PublicRouteChildren: PublicRouteChildren = {
+  PublicLoginRoute: PublicLoginRoute,
+}
+
+const PublicRouteWithChildren =
+  PublicRoute._addFileChildren(PublicRouteChildren)
+
+export interface FileRoutesByFullPath {
+  '': typeof PublicRouteWithChildren
+  '/login': typeof PublicLoginRoute
+  '/': typeof ProtectedIndexRoute
+}
+
+export interface FileRoutesByTo {
+  '': typeof PublicRouteWithChildren
+  '/login': typeof PublicLoginRoute
+  '/': typeof ProtectedIndexRoute
+}
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
+  '/_protected': typeof ProtectedRouteWithChildren
+  '/_public': typeof PublicRouteWithChildren
+  '/_public/login': typeof PublicLoginRoute
+  '/_protected/': typeof ProtectedIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: never
+  fullPaths: '' | '/login' | '/'
   fileRoutesByTo: FileRoutesByTo
-  to: never
-  id: '__root__'
+  to: '' | '/login' | '/'
+  id:
+    | '__root__'
+    | '/_protected'
+    | '/_public'
+    | '/_public/login'
+    | '/_protected/'
   fileRoutesById: FileRoutesById
 }
 
-export interface RootRouteChildren {}
+export interface RootRouteChildren {
+  ProtectedRoute: typeof ProtectedRouteWithChildren
+  PublicRoute: typeof PublicRouteWithChildren
+}
 
-const rootRouteChildren: RootRouteChildren = {}
+const rootRouteChildren: RootRouteChildren = {
+  ProtectedRoute: ProtectedRouteWithChildren,
+  PublicRoute: PublicRouteWithChildren,
+}
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
@@ -52,7 +153,30 @@ export const routeTree = rootRoute
   "routes": {
     "__root__": {
       "filePath": "__root.tsx",
-      "children": []
+      "children": [
+        "/_protected",
+        "/_public"
+      ]
+    },
+    "/_protected": {
+      "filePath": "_protected.tsx",
+      "children": [
+        "/_protected/"
+      ]
+    },
+    "/_public": {
+      "filePath": "_public.tsx",
+      "children": [
+        "/_public/login"
+      ]
+    },
+    "/_public/login": {
+      "filePath": "_public/login.tsx",
+      "parent": "/_public"
+    },
+    "/_protected/": {
+      "filePath": "_protected/index.tsx",
+      "parent": "/_protected"
     }
   }
 }
