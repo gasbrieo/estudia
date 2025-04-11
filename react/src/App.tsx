@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 
+import ErrorPage from "./pages/ErrorPage";
+import NotFound from "./pages/NotFound";
 import { useAuthStore } from "./stores/authStore";
 import AppTheme from "./theme/AppTheme";
 
@@ -16,10 +18,12 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 const router = createRouter({
-  routeTree,
   context: {
     auth: undefined!,
   },
+  defaultNotFoundComponent: NotFound,
+  defaultErrorComponent: ErrorPage,
+  routeTree,
 });
 
 declare module "@tanstack/react-router" {

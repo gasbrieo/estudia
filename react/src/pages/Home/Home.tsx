@@ -31,6 +31,14 @@ const Home: FC = () => {
         >
           Logout
         </Button>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            navigate({ to: "/user/$username", params: { username: "gabrielabreu" } });
+          }}
+        >
+          Profile
+        </Button>
       </Box>
     </Stack>
   );

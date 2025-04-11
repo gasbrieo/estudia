@@ -3,13 +3,21 @@ import { createRoot } from "react-dom/client";
 
 import App from "./App";
 
-const rootElement = document.getElementById("root")!;
+const start = async () => {
+  if (import.meta.env.VITE_API_MOCKING === "enabled") {
+    const { worker } = await import("./mocks/browser");
+    await worker.start();
+  }
 
-if (!rootElement.innerHTML) {
-  const root = createRoot(rootElement);
-  root.render(
-    <StrictMode>
-      <App />
-    </StrictMode>
-  );
-}
+  const rootElement = document.getElementById("root")!;
+  if (!rootElement.innerHTML) {
+    const root = createRoot(rootElement);
+    root.render(
+      <StrictMode>
+        <App />
+      </StrictMode>
+    );
+  }
+};
+
+start();
