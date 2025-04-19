@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import { useLoaderData } from "@tanstack/react-router";
 
-const UserProfile: FC = () => {
+const UserProfilePage: FC = () => {
   const { userProfileData } = useLoaderData({ from: "/_protected/user/$username/" });
 
   return (
@@ -24,4 +24,4 @@ const UserProfile: FC = () => {
   );
 };
 
-export default UserProfile;
+export default UserProfilePage;

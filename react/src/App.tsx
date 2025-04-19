@@ -6,7 +6,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 
 import ErrorPage from "./pages/ErrorPage";
-import NotFound from "./pages/NotFound";
+import NotFoundPage from "./pages/NotFoundPage";
 import { useAuthStore } from "./stores/authStore";
 import AppTheme from "./theme/AppTheme";
 
@@ -21,7 +21,7 @@ const router = createRouter({
   context: {
     auth: undefined!,
   },
-  defaultNotFoundComponent: NotFound,
+  defaultNotFoundComponent: NotFoundPage,
   defaultErrorComponent: ErrorPage,
   routeTree,
 });

@@ -7,16 +7,9 @@ import { useNavigate } from "@tanstack/react-router";
 
 import { useAuthStore } from "@/stores/authStore";
 
-const mockedUser = {
-  id: "1",
-  name: "Gabriel",
-  email: "gabriel@email.com",
-  avatar: "https://api.dicebear.com/7.x/initials/svg?seed=G",
-};
-
-const Login: FC = () => {
+const HomePage: FC = () => {
   const navigate = useNavigate();
-  const login = useAuthStore((state) => state.login);
+  const logout = useAuthStore((state) => state.logout);
 
   return (
     <Stack
@@ -32,15 +25,23 @@ const Login: FC = () => {
         <Button
           variant="outlined"
           onClick={() => {
-            login(mockedUser);
-            navigate({ to: "/" });
+            logout();
+            navigate({ to: "/login" });
           }}
         >
-          Login
+          Logout
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            navigate({ to: "/user/$username", params: { username: "gabrielabreu" } });
+          }}
+        >
+          Profile
         </Button>
       </Box>
     </Stack>
   );
 };
 
-export default Login;
+export default HomePage;

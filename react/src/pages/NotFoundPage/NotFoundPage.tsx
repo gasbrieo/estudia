@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { Link as RouterLink } from "@tanstack/react-router";
 
-const NotFound: FC = () => {
+const NotFoundPage: FC = () => {
   return (
     <Box
       sx={{
@@ -57,4 +57,4 @@ const NotFound: FC = () => {
   );
 };
 
-export default NotFound;
+export default NotFoundPage;

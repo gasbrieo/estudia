@@ -1,11 +1,11 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
-import UserProfile from "@/pages/UserProfile";
+import UserProfilePage from "@/pages/UserProfilePage";
 import { getUserProfile } from "@/services/user";
 import { HttpApiError } from "@/types/api";
 
 export const Route = createFileRoute("/_protected/user/$username/")({
-  component: UserProfile,
+  component: UserProfilePage,
   loader: async ({ params }) => {
     return await getUserProfile(params.username)
       .then((userProfileData) => {
